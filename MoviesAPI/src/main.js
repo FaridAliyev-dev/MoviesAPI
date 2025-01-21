@@ -19,26 +19,39 @@ async function fetchMovies() {
 }
 
 async function deleteMovie(id) {
-  try {
-    const response = await axios.delete(`${API_URL}/${id}`);
-    if (response.status === 200) {
-      Swal.fire({
-        icon: "success",
-        title: "Deleted!",
-        text: "Movie has been deleted.",
-      });
-      updateDisplayedMovies();
-    } else {
-      throw new Error("Failed to delete movie");
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const response = await fetch(`${API_URL}/${id}`, {
+          method: "DELETE",
+        });
+        if (!response.ok) {
+          throw new Error("Failed to delete movie");
+        }
+        Swal.fire({
+          title: "Deleted!",
+          text: "The movie has been deleted.",
+          icon: "success",
+        });
+        updateDisplayedMovies();
+      } catch (error) {
+        console.error("Error deleting movie:", error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Failed to delete movie. Please try again later.",
+        });
+      }
     }
-  } catch (error) {
-    console.error("Error deleting movie:", error);
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Failed to delete movie. Please try again later.",
-    });
-  }
+  });
 }
 
 function displayMovies(movies) {

@@ -12,18 +12,50 @@
 
     <style>
       input {
-        background-color: #a7d18d !important;
+        background-color: white !important;
+        border-radius: 8px !important;
+      }
+
+      select {
+        border-radius: 8px !important;
+      }
+
+      select i {
+        padding: 15px !important;
       }
 
       body {
-        background-image: url("shrek.jpg");
-        background-repeat: repeat;
-        background-size: 10px 10px;
-        background-position: center;
-        background-size: contain;
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
+        background-color: black;
+        color: white !important;
+      }
+
+      .card {
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+        margin: 15px;
+        border-radius: 15px;
+        background-color: rgb(21, 21, 21);
+        color: white;
+      }
+      .card:hover {
+        transform: scale(1.05);
+      }
+
+      .navbar {
+        padding: 15px !important;
+      }
+
+      .card img {
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+      }
+
+      .navbar-light .navbar-nav .nav-link {
+        color: white !important;
+      }
+
+      .navbar-brand {
+        color: white !important;
       }
     </style>
   </head>
@@ -32,21 +64,18 @@
       class="navbar navbar-expand-lg navbar-light bg-light"
       style="
         position: fixed;
+        width: 100%;
+        margin: 0;
         padding: 0;
         z-index: 1;
         top: 0;
         margin-bottom: 50px;
-        background-color: #a7d18d !important;
+        background-color: black !important;
+        color: white;
         border-bottom: 2px solid white;
-        width: 100%;
       "
     >
-      <a class="navbar-brand" href="index.html"
-        ><img
-          src="shrek.jpg"
-          style="height: 50px; width: 80px; margin: 10px"
-        />SHREK MOVIES</a
-      >
+      <a class="navbar-brand" href="index.html">MOVIES</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -64,14 +93,14 @@
             <a class="nav-link" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="add.html">Add SHREKS</a>
+            <a class="nav-link" href="add.html">Add Movies</a>
           </li>
         </ul>
       </div>
     </nav>
 
-    <div class="container mt-5">
-      <h2>Add New SHREK</h2>
+    <div class="container mt-5 pt-5">
+      <h2>Add New Movie</h2>
       <form id="addMovieForm">
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
