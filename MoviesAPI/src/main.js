@@ -1,7 +1,5 @@
-// URL for the JSON server
 const API_URL = "https://movies-json-server.vercel.app/movies";
 
-// Function to fetch movies from the API
 async function fetchMovies() {
   try {
     const response = await fetch(API_URL);
@@ -20,7 +18,6 @@ async function fetchMovies() {
   }
 }
 
-// Function to delete a movie from the API
 async function deleteMovie(id) {
   try {
     const response = await axios.delete(`${API_URL}/${id}`);
@@ -30,7 +27,7 @@ async function deleteMovie(id) {
         title: "Deleted!",
         text: "Movie has been deleted.",
       });
-      updateDisplayedMovies(); // Refresh the movie list
+      updateDisplayedMovies();
     } else {
       throw new Error("Failed to delete movie");
     }

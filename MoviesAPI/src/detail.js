@@ -42,11 +42,9 @@ async function loadMovieDetail(id) {
   }
 }
 
-// Get the movie ID from the query parameter
 const urlParams = new URLSearchParams(window.location.search);
 const movieId = urlParams.get("id");
 
-// Load the movie details if an ID is present
 if (movieId) {
   loadMovieDetail(movieId);
 }
